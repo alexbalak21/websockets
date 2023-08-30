@@ -9,6 +9,7 @@ const button = document.querySelector("button")
 
 socket.addEventListener("open", (event) => {
     server_status.innerText = "Server Connnected"
+    server_status.style.color = "Green"
 })
 
 input.addEventListener("keypress", (e) => {
