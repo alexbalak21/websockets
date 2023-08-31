@@ -2,8 +2,8 @@
 
 //INNER ELEMENTNTS
 const server_status = document.querySelector("#status")
-const main = document.querySelector("main")
-const input = document.querySelector("input")
+const chat = document.querySelector("#chat")
+const input = document.querySelector("#input")
 const button = document.querySelector("button")
 
 //CREEATINGCONNECTION SOCKET
@@ -16,7 +16,7 @@ function Listen_to_client() {
             console.log("Server not Connected")
             return null
         }
-        if (e.key === "Enter" && input.value !== "") {
+        if (e.ctrlKey && e.key === "Enter" && input.value !== "") {
             const msg = input.value
             SOCKET.send(msg)
             from_client(msg)
@@ -49,19 +49,19 @@ function Listen_to_server() {
 function from_client(message) {
     const h3 = document.createElement("h3")
     h3.innerText = "From Client"
-    main.appendChild(h3)
+    chat.appendChild(h3)
     const p = document.createElement("p")
     p.innerText = message
-    main.appendChild(p)
+    chat.appendChild(p)
 }
 
 function from_server(message) {
     const h3 = document.createElement("h3")
     h3.innerText = "From Server"
-    main.appendChild(h3)
+    chat.appendChild(h3)
     const p = document.createElement("p")
     p.innerText = message
-    main.appendChild(p)
+    chat.appendChild(p)
 }
 
 function Disconnect() {
@@ -95,9 +95,3 @@ function app() {
     Listen_to_window_close()
 }
 app()
-
-const m = { from: "Alex", to: "Max", message: "Hello" }
-
-console.log(JSON.stringify(m))
-
-console.log(SOCKET.readyState)
