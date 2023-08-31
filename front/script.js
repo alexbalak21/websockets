@@ -10,11 +10,13 @@ function connect(adress = "ws://localhost:8765") {
     let socket = null
     try {
         socket = new WebSocket(adress)
+        console.log("Try")
+        socket.addEventListener("open", () => {})
         server_status.innerText = "Server Connnected"
         server_status.style.color = "Green"
         socket.addEventListener("open", () => socket.send("Client Connnected"))
     } catch (err) {
-        return null
+        console.log("Server Disconnected")
     }
     return socket
 }
@@ -69,20 +71,20 @@ function Disconnect(socket) {
 
 function Listen_to_close(socket) {
     window.addEventListener("beforeunload", () => {
-        // socket.send("Closing connection")
         Disconnect(socket)
     })
 }
 
 function app() {
     let socket = null
-    try {
-        socket = connect()
-    } catch {
-        return null
-    }
+    socket = connect()
+
     Listen_to_server(socket)
     Listen_to_client(socket)
     Listen_to_close(socket)
 }
 app()
+
+const m = { from: "Alex", to: "Max", message: "Hello" }
+
+console.log(JSON.stringify(m))
