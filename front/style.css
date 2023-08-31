@@ -13,14 +13,14 @@ body {
     flex-direction: column;
 }
 main {
-    width: 1000px;
+    width: 80%;
     height: 800px;
     border: 1px solid black;
     border-radius: 5px;
 }
 
 input {
-    width: 1000px;
+    width: 80%;
     outline: none;
     margin-top: 10px;
     margin-bottom: 5px;
