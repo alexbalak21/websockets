@@ -8,6 +8,11 @@ const button = document.querySelector("button")
 
 //CREEATINGCONNECTION SOCKET
 
+input.addEventListener("keypress", (e) => {
+    if (e.ctrlKey) console.log("Ctrl + ", e.key === "\n")
+    console.log(e.key)
+})
+
 const SOCKET = new WebSocket("ws://localhost:8765")
 
 function Listen_to_client() {
@@ -16,7 +21,7 @@ function Listen_to_client() {
             console.log("Server not Connected")
             return null
         }
-        if (e.ctrlKey && e.key === "Enter" && input.value !== "") {
+        if (e.ctrlKey && e.key === "\n" && input.value !== "") {
             const msg = input.value
             SOCKET.send(msg)
             from_client(msg)
