@@ -1,6 +1,4 @@
 const users = document.querySelectorAll(".user")
-const stat = document.getElementById("status")
-console.log(stat)
 users.forEach(
     (user) =>
         (user.onclick = () => {
