@@ -9,7 +9,8 @@ WEBSOCKET = None
 
 async def connect(name):
     users.append(name)
-    await WEBSOCKET.send(f'{name} Connected')
+    response = "{'id': %s,'name':'%s'}" % (len(users)-1, name)
+    await WEBSOCKET.send(response)
 
 
 async def disconnect(name):
@@ -28,7 +29,6 @@ async def listen(websocket):
                 await connect(m.user)
             else:
                 await disconnect(m.user)
-            await websocket.send("Finish")
 
 
 async def main():

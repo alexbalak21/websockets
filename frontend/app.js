@@ -8,6 +8,7 @@ const button = document.querySelector("button")
 
 //CREEATINGCONNECTION SOCKET
 const SOCKET = new WebSocket("ws://localhost:8765")
+let USER = ""
 
 function Listen_to_client() {
     input.addEventListener("keypress", (e) => {
@@ -42,7 +43,8 @@ function Listen_to_server() {
         console.log("Server not Connected")
         return null
     }
-    SOCKET.onmessage = (event) => from_server(event.data)
+    SOCKET.addEventListener("message", (e) => from_server(e.data))
+    // SOCKET.onmessage = (event) => from_server(event.data)
 }
 
 function from_client(message) {
