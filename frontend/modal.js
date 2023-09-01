@@ -10,7 +10,13 @@ log_btn.onclick = () => {
     if (SOCKET.readyState !== 1) return null
     else modal.showModal()
     modal_close_btn.onclick = () => modal.close()
-    modal_login.onclick = () => log_in_server(modal_input.value)
+    modal_login.onclick = () =>
+        modal_input.value ? log_in_server(modal_input.value) : null
+    modal.addEventListener("keypress", (e) =>
+        e.key === "Enter" && modal_input.value
+            ? log_in_server(modal_input.value)
+            : null
+    )
 }
 
 function log_in_server(user = "") {

@@ -60,6 +60,7 @@ section {
     height: 760px;
     border: 1px solid black;
     border-radius: 5px;
+    overflow: scroll;
 }
 
 #inputs {
