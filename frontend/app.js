@@ -5,22 +5,8 @@ const server_status = document.querySelector("#status")
 const chat = document.querySelector("#chat")
 const input = document.querySelector("#input")
 const button = document.querySelector("button")
-const log_btn = document.getElementById("log")
-const modal = document.querySelector("dialog")
-
-// LOG IN / OUT
-log_btn.onclick = () => {
-    if (SOCKET.readyState !== 1) return null
-    else modal.showModal()
-}
 
 //CREEATINGCONNECTION SOCKET
-
-input.addEventListener("keypress", (e) => {
-    if (e.ctrlKey) console.log("Ctrl + ", e.key === "\n")
-    console.log(e.key)
-})
-
 const SOCKET = new WebSocket("ws://localhost:8765")
 
 function Listen_to_client() {
@@ -48,12 +34,6 @@ function Listen_to_client() {
             input.value = ""
         }
     })
-    return null
-}
-
-function log_in_server(user) {
-    const login_message = JSON.stringify({ login: user })
-    SOCKET.send(login_message)
     return null
 }
 
